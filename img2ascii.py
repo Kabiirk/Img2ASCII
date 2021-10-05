@@ -9,8 +9,10 @@ new_width = 100
 # Resze image while maintaining aspect ratio
 def resize_img(image, new_width=100):
     width, height = image.size
+    print(width, height)
     ratio = height/width
     new_height = int(new_width * ratio)
+    print(new_width, new_height)
     resized_img = image.resize((new_width, new_height))
     return resized_img
 
@@ -39,11 +41,11 @@ new_image_data = pixel_to_ascii(fifty_shades_of_grey(resize_img(image)))
 
 # Format
 pixel_count = len(new_image_data)
-ascii_img = "\n".join(new_image_data[i:(i+new_width)] for i in range(0, pixel_count))
+ascii_img = "\n".join([new_image_data[index:(index+new_width)] for index in range(0, pixel_count, new_width)])
 
 # Output
 # Print on Terminal
-print(ascii_img)
+# print(ascii_img)
 
 # Output to a .txt File
 with open(r"output\ascii_image.txt", "w") as f:
