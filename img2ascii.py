@@ -11,9 +11,9 @@ def resize_img(image, new_width=100):
     width, height = image.size
     print(width, height)
     ratio = height/width
-    new_height = int(new_width * ratio)
+    new_height = int(new_width * ratio)//1.75
     print(new_width, new_height)
-    resized_img = image.resize((new_width, new_height))
+    resized_img = image.resize((new_width, int(new_height)))
     return resized_img
 
 # Convert each Pixel to Grayscale
